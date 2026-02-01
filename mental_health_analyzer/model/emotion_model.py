@@ -10,7 +10,7 @@ def analyze_text(text):
     return emotion
 
 def predict_risk(emotion):
-    if emotion in ["sadness", "fear"]:
+    if emotion in ["agression", "Depression", "threat"]:
         return "High Risk"
     elif emotion in ["anger"]:
         return "Medium Risk"
