@@ -6,10 +6,10 @@ emotion_model = pipeline("text-classification",
 
 def analyze_text(text):
     result = emotion_model(text)
-    emotion = result[0]['label']
+    emotion = result[0]['label'].lower
     return emotion
 
-def predict_risk(Feeling):
+def predict_risk(emotion):
     if Feeling in ["sadness", "anxiety", "Depression"]:
         return "High Risk"
     elif Feeling in ["anger","fear"]:
@@ -19,12 +19,12 @@ def predict_risk(Feeling):
     else:
         return "No Risk"
 
-def Mental_State(Emotion):
+def Mental_State(emotion):
     if Emotion in ["sadness", "anxiety", "Depression"]:
         return "Signs of Depression"
     elif Emotion in ["anger","fear"]:
         return "Signs of Anxiety"
     elif Emotion in ["sadness"]:
-        return "Signs of Sadness"
+        return "Signs of Stress"
     else:
         return "Normal"

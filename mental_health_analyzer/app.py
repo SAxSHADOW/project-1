@@ -17,10 +17,10 @@ def home():
         emotion = analyze_text(text)
 
         # Risk Prediction
-        risk = predict_risk(Feelings)
+        risk = predict_risk(emotions)
 
         #Mental_State
-        Mental_State = Mental_State(Emotion)
+        Mental_State = Mental_State(emotion)
 
         # Chatbot Response
         bot_reply = chatbot_reply(text)
