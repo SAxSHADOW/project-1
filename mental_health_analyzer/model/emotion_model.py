@@ -10,21 +10,21 @@ def analyze_text(text):
     return emotion
 
 def predict_risk(emotion):
-    if Feeling in ["sadness", "anxiety", "Depression"]:
+    if emotion in ["sadness", "anxiety", "depression"]:
         return "High Risk"
-    elif Feeling in ["anger","fear"]:
+    elif emotion in ["anger","fear"]:
         return "Medium Risk"
-    elif Feeling in ["sadness"]:
+    elif emotion in ["sadness"]:
         return "Low Risk"
     else:
         return "No Risk"
 
 def Mental_State(emotion):
-    if Emotion in ["sadness", "anxiety", "Depression"]:
+    if emotion in ["sadness", "anxiety", "depression"]:
         return "Signs of Depression"
-    elif Emotion in ["anger","fear"]:
+    elif emotion in ["anger","fear"]:
         return "Signs of Anxiety"
-    elif Emotion in ["sadness"]:
+    elif emotion in ["sadness"]:
         return "Signs of Stress"
     else:
         return "Normal"
