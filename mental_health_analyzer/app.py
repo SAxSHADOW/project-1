@@ -17,14 +17,17 @@ def home():
         emotion = analyze_text(text)
 
         # Risk Prediction
-        risk = predict_risk(emotion)
+        risk = predict_risk(Feelings)
+
+        #Mental_State
+        Mental_State = Mental_State(Emotion)
 
         # Chatbot Response
         bot_reply = chatbot_reply(text)
 
         result = emotion
 
-    return render_template("index.html", result=result, risk=risk, bot_reply=bot_reply)
+    return render_template("index.html", result=result, risk=risk, Mental_State=Mental_State, bot_reply=bot_reply)
 
 if __name__ == "__main__":
     app.run(debug=True)
