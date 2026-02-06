@@ -36,7 +36,7 @@ def home():
 
         result = emotion
 
-    return render_template("index.html", result=result, risk=risk, Mental_State_value=Mental_State_value, bot_reply=bot_reply)
+    return render_template("index.html", result=result, risk=risk, Mental_State=Mental_State_value, bot_reply=bot_reply)
 
 if __name__ == "__main__":
     app.run(debug=True)
