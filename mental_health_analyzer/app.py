@@ -12,7 +12,14 @@ def home():
     bot_reply = None
 
     if request.method == "POST":
-        text = request.form["text"]
+        print("✅ POST request received")
+
+        text = request.form.get("text")
+        print("📝 User text:", text)
+
+        if text:
+            emotion = analyze_text(text)
+            print("🎭 Emotion:", emotion)
 
         # AI Emotion Analysis
         emotion = analyze_text(text)

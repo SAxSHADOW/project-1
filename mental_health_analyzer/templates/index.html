@@ -11,9 +11,11 @@
     <h1>AI-Based Mental Health Analyzer</h1>
     <p class="subtitle">Analyze emotional tone using AI-powered text analysis</p>
 
-    <textarea placeholder="Enter your thoughts here..."></textarea>
+    <form method="POST">
+      <textarea name="text" placeholder="Enter your thoughts here..." required></textarea>
+      <button type="submit">Analyze</button>
+    </form>
 
-    <button type="submit">Analyze</button>
 
     <!-- Output Section -->
     <div class="output">
