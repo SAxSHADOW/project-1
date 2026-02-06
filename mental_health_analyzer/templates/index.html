@@ -13,29 +13,29 @@
 
     <textarea placeholder="Enter your thoughts here..."></textarea>
 
-    <button>Analyze</button>
+    <button type="submit">Analyze</button>
 
     <!-- Output Section -->
     <div class="output">
       <div class="result">
         <span>Detected Emotion</span>
-        <strong class="emotion">--</strong>
+        <strong class="emotion">{{ result if result else "--" }}</strong>
       </div>
 
       <div class="result">
         <span>Mental Health Risk</span>
-        <strong class="risk low">--</strong>
+        <strong class="risk low">-{{ result if result else "--" }}</strong>
       </div>
 
       <div class="result">
         <spam>Mental_state</spam>
-        <strong class="Mental_State">--</strong>
+        <strong class="Mental_State">{{ result if result else "--" }}</strong>
       </div>
 
 
       <div class="chatbot">
         <strong>AI Feedback</strong>
-        <p>Hi, There how was you feeling today</p>
+        <p>{{ bot_reply if bot_reply else "Hi there 👋 How are you feeling today?" }}</p>
       </div>
     </div>
 
