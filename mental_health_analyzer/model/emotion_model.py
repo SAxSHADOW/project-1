@@ -6,7 +6,7 @@ emotion_model = pipeline("text-classification",
 
 def analyze_text(text):
     result = emotion_model(text)
-    emotion = result[0]['label'].lower
+    emotion = result[0]['label'].lower()
     return emotion
 
 def predict_risk(emotion):
