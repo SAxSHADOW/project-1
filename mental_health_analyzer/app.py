@@ -1,5 +1,5 @@
 from flask import Flask, render_template, request
-from model.emotion_model import analyze_text, predict_risk
+from model.emotion_model import analyze_text, predict_risk, Mental_State
 from chatbot.chatbot import chatbot_reply
 
 app = Flask(__name__)
@@ -8,6 +8,7 @@ app = Flask(__name__)
 def home():
     result = None
     risk = None
+    Mental_State = None
     bot_reply = None
 
     if request.method == "POST":
@@ -15,19 +16,20 @@ def home():
 
         # AI Emotion Analysis
         emotion = analyze_text(text)
+        result = emotion
 
         # Risk Prediction
         risk = predict_risk(emotions)
 
         #Mental_State
-        Mental_State = Mental_State(emotion)
+        Mental_State_value= Mental_State(emotion)
 
         # Chatbot Response
         bot_reply = chatbot_reply(text)
 
         result = emotion
 
-    return render_template("index.html", result=result, risk=risk, Mental_State=Mental_State, bot_reply=bot_reply)
+    return render_template("index.html", result=result, risk=risk, Mental_State_value=Mental_State, bot_reply=bot_reply)
 
 if __name__ == "__main__":
     app.run(debug=True)
