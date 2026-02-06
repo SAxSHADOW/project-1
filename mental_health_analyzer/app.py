@@ -8,7 +8,7 @@ app = Flask(__name__)
 def home():
     result = None
     risk = None
-    Mental_State = None
+    Mental_State_value = None
     bot_reply = None
 
     if request.method == "POST":
@@ -26,7 +26,7 @@ def home():
         result = emotion
 
         # Risk Prediction
-        risk = predict_risk(emotions)
+        risk = predict_risk(emotion)
 
         #Mental_State
         Mental_State_value= Mental_State(emotion)
@@ -36,7 +36,7 @@ def home():
 
         result = emotion
 
-    return render_template("index.html", result=result, risk=risk, Mental_State_value=Mental_State, bot_reply=bot_reply)
+    return render_template("index.html", result=result, risk=risk, Mental_State_value=Mental_State_value, bot_reply=bot_reply)
 
 if __name__ == "__main__":
     app.run(debug=True)
