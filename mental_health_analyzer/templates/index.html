@@ -34,10 +34,10 @@
         <strong class="mental-state">{{ Mental_State if Mental_State else "--" }}</strong>
       </div>
 
-      
+
       <div class="chatbot">
         <strong>AI Feedback</strong>
-        <p>{{ bot_reply if bot_reply else "Hi there 👋 How are you feeling today?" }}</p>
+        <p>{{ bot_reply or "Hello! I'm here to listen. How are you feeling today?" }}</p>
       </div>
     </div>
 

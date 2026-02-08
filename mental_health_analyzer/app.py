@@ -13,7 +13,7 @@ def home():
     bot_reply = None
 
     if request.method == "POST":
-        text = request.form.get("text")
+        text = request.form.get("text").strip()
 
         if text:
             # Emotion detection
@@ -21,10 +21,10 @@ def home():
             result = emotion
 
             # ML-based risk prediction
-            risk, Mental_State = predict_risk_from_text(emotion)
+            risk, Mental_State = predict_risk_from_text(emotion, text)
 
             # Chatbot response
-            bot_reply = chatbot_reply(text)
+            bot_reply = chatbot_reply(text, emotion, risk)
 
     return render_template(
         "index.html",

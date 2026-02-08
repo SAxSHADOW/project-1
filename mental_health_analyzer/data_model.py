@@ -91,35 +91,31 @@ def predict_treatment(input_dict):
     return target_le.inverse_transform([pred])[0]
 
 
-def predict_risk_from_text(emotion):
-    input_dict = {
-        "Gender": "Male",
-        "Occupation": "Student",
-        "self_employed": "No",
-        "family_history": "No",
-        "Days_Indoors": "1-14 days",
-        "Growing_Stress": "No",
-        "Changes_Habits": "No",
-        "Mental_Health_History": "No",
-        "Mood_Swings": "Low",
-        "Coping_Struggles": "No",
-        "Work_Interest": "Yes",
-        "Social_Weakness": "No",
-        "mental_health_interview": "No",
-    }
+def predict_risk_from_text(emotion, text=None):
+    text = text.lower() if text else ""
 
-    if emotion in ["sadness"]:
-        input_dict["Growing_Stress"] = "Yes"
-        input_dict["Mood_Swings"] = "High"
-        input_dict["Coping_Struggles"] = "Yes"
+    high_risk_words = ["suicide", "die", "kill", "worthless", "hopeless"]
+    medium_risk_words = ["tired", "alone", "sad", "stressed", "depressed"]
 
-    elif emotion == "fear":
-        input_dict["Growing_Stress"] = "Yes"
-        input_dict["Mood_Swings"] = "Medium"
+    # Keyword-based risk
+    if any(word in text for word in high_risk_words):
+        return "High", "Critical"
 
-    elif emotion == "anger":
-        input_dict["Mood_Swings"] = "High"
-        input_dict["Work_Interest"] = "No"
+    if any(word in text for word in medium_risk_words):
+        return "Medium", "Struggling"
+
+    # Emotion-based fallback
+    if emotion in ["sadness", "fear"]:
+        return "Medium", "Needs Support"
+
+    if emotion == "anger":
+        return "Low", "Emotionally Active"
+
+    if emotion == "joy":
+        return "Low", "Positive"
+
+    return "Low", "Stable"
+
 
     treatment = predict_treatment(input_dict)
 
